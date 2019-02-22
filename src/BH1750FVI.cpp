@@ -43,13 +43,18 @@ BH1750FVI::BH1750FVI(uint8_t AddressPin, eDeviceAddress_t DeviceAddress, eDevice
 void BH1750FVI::begin(void)
 {
   Wire.begin(); 
-  I2CWrite(k_DevStatePowerUp);      // Turn it On 
-  if (m_AddressPinUsed) {
-    pinMode(m_AddressPin, OUTPUT);    // Set the correct pinmode
-    digitalWrite(m_AddressPin, HIGH); // Address to high
-    SetAddress(m_DeviceAddress);      // Set the address
-  }
-  SetMode(m_DeviceMode);            // Set the mode
+  WakeUp();
+}
+ 
+void BH1750FVI::WakeUp(void)
+{
+	I2CWrite(k_DevStatePowerUp);      // Turn it On 
+	if (m_AddressPinUsed) {
+		pinMode(m_AddressPin, OUTPUT);    // Set the correct pinmode
+		digitalWrite(m_AddressPin, HIGH); // Address to high
+		SetAddress(m_DeviceAddress);      // Set the address
+	}
+	SetMode(m_DeviceMode);            // Set the mode
 }
   
 void BH1750FVI::Sleep(void)
