@@ -92,7 +92,12 @@ class BH1750FVI {
      * @param DeviceMode, the mode to set the device in
      */
     void SetMode(eDeviceMode_t DeviceMode);
-
+  
+    /*
+     * Turn on the sensor module after one time mode power down
+     */
+    void WakeUp(void);
+  
     /*
      * Activate sleep mode
      */
