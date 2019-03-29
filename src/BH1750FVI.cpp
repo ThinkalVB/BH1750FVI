@@ -105,6 +105,15 @@ uint16_t BH1750FVI::GetLightIntensity(void)
   return Value / 1.2;
 }
 
+bool BH1750FVI::inRange(uint16_t minIntensity,uint16_t maxIntensity)
+{
+  uint16_t lightIntensity = GetLightIntensity();
+  if(minIntensity <= lightIntensity <= maxIntensity)
+    return true;
+  else 
+    return false;
+}
+
 void BH1750FVI::I2CWrite(uint8_t Data)
 {
   Wire.beginTransmission(m_DeviceAddress);

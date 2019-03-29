@@ -16,3 +16,4 @@ GetLightIntensity	KEYWORD2
 SetMode	KEYWORD2
 Sleep	KEYWORD2
 Reset	KEYWORD2
+inRange	KEYWORD2

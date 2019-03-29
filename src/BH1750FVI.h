@@ -82,17 +82,23 @@ class BH1750FVI {
     void begin(void);
 
     /*
-     * Get the measured light intensity from the device
-     * @return The light intensity measured by the device in 'lux'
-     */
-    uint16_t GetLightIntensity(void);
-    
-    /*
      * Set the mode
      * @param DeviceMode, the mode to set the device in
      */
     void SetMode(eDeviceMode_t DeviceMode);
   
+    /*
+     * Get the measured light intensity from the device
+     * @return The light intensity measured by the device in 'lux'
+     */
+    uint16_t GetLightIntensity(void);
+
+    /*
+     * Check if the light intensity is between the parameter
+     * @return true if the intensity is inside the range 
+     */
+    bool inRange(uint16_t minIntensity,uint16_t maxIntensity);
+
     /*
      * Turn on the sensor module after one time mode power down
      */
@@ -110,7 +116,7 @@ class BH1750FVI {
 
        
   private:
-    
+
     /*
      * Set the High or Low I2C address
      * @param DeviceAddress, the high or low address
